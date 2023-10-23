@@ -1,6 +1,5 @@
-import type { StorybookConfig } from "@storybook/react-webpack5";
-
-const config: StorybookConfig = {
+const path = require("path");
+module.exports = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
@@ -17,5 +16,10 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   staticDirs: ["..\\public"],
+  webpackFinal: async (config) => {
+    config.resolve.alias = {...config.resolve.alias, "/src": path.resolve(__dirname, '../src')};
+
+    return config;
+  },
 };
-export default config;
+

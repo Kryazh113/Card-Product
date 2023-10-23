@@ -1,7 +1,16 @@
-import type { Preview } from "@storybook/react";
+// import { ThemeProvider } from "styled-components";
+// import { theme } from "/src/theme/theme";
 
-const preview: Preview = {
-  parameters: {
+// export const decorators = [
+//   Story => (
+//     <ThemeProvider theme={theme}>
+//       <Story />
+//     </ThemeProvider>
+//   )
+// ];
+
+
+export const parameters = {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
       matchers: {
@@ -9,7 +18,5 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-  },
 };
 
-export default preview;

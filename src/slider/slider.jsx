@@ -1,28 +1,28 @@
 import React, { useRef } from "react";
 import { SwiperSlide } from "swiper/react";
-//import "swiper/swiper.scss";
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-
+import "swiper/scss";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 import SwiperCore, { Navigation } from "swiper";
 import { Image } from "/src/elements";
-import { StyledSider, StyledButton, SlyderWrapper } from "./styled";
+import { StyledWrapper, StyledButton, StyledSlider } from "./styled";
 
-function Slider({ images }) {
+function Slider({ images, width= 200, height= 257 }) {
   SwiperCore.use([Navigation]);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
   return (
-    <SlyderWrapper>
+    <StyledWrapper width={width}>
       <StyledButton left ref={navigationPrevRef} title="Назад">
         &lt;
       </StyledButton>
-      <StyledButton right ref={navigationNextRef} title="Вперед">
+      <StyledButton right ref={navigationNextRef} title="Вперёд">
         &gt;
       </StyledButton>
-      <StyledSider
+      <StyledSlider
+        width={width}
+        height={height}
         onBeforeInit={(swiper) => {
           swiper.params.navigation.prevEl = navigationPrevRef.current;
           swiper.params.navigation.nextEl = navigationNextRef.current;
@@ -32,9 +32,8 @@ function Slider({ images }) {
           nextEl: navigationNextRef.current
         }}
         freeMode
-        wathSlidesProgress
-        sliderPerView={1}
-        spaceBetween={20}
+        watchSlidesProgress
+        slidesPerView={1}
         loop
       >
         {images &&
@@ -44,14 +43,13 @@ function Slider({ images }) {
               <Image
                 src={image}
                 alt="изображение продукта"
-                width="200"
-                height="257"
-                maxWidth="200"
+                height={height}
+                maxWidth={width}
               />
             </SwiperSlide>
           ))}
-      </StyledSider>
-    </SlyderWrapper>
+      </StyledSlider>
+    </StyledWrapper>
   );
 }
 

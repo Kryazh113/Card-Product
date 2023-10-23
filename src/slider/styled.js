@@ -2,16 +2,17 @@ import styled from "styled-components";
 import { Swiper } from "swiper/react";
 import Button from "/src/button/button";
 
-export const StyledSider = styled(Swiper)`
-  width: 200px;
-  height: 257px;
+export const StyledSlider = styled(Swiper)`
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
   margin-left: 30px;
   margin-right: 30px;
   z-index: 5;
 `;
 
-export const SlyderWrapper = styled.div`
+export const StyledWrapper = styled.div`
   position: relative;
+  width: ${props => props.width + 60}px;
 `;
 
 export const StyledButton = styled(Button)`
@@ -20,8 +21,8 @@ export const StyledButton = styled(Button)`
   top: 0;
   bottom: 0;
   margin: auto;
-  left: ${(props) => (props.left ? "5px" : "auto")};
-  right: ${(props) => (props.right ? "5px" : "auto")};
+  left: ${(props) => (props.left ? "-3px" : "auto")};
+  right: ${(props) => (props.right ? "-3px" : "auto")};
   width: 25px;
   height: 25px;
   border-radius: 50%;
